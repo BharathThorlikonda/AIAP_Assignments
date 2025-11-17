@@ -1,0 +1,82 @@
+class Node:
+    """
+    Represents a node in a singly linked list.
+    Each node contains data and a reference to the next node.
+    """
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    """
+    A simple implementation of a Singly Linked List data structure.
+    Supports insertion at the beginning, insertion at the end, and displaying the list.
+    """
+    def __init__(self):
+        """
+        Initializes an empty linked list.
+        """
+        self.head = None
+
+    def insert_at_beginning(self, data):
+        """
+        Inserts a new node with the given data at the beginning of the list.
+
+        Args:
+            data: The data to be stored in the new node.
+        """
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    def insert_at_end(self, data):
+        """
+        Inserts a new node with the given data at the end of the list.
+
+        Args:
+            data: The data to be stored in the new node.
+        """
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = new_node
+
+    def display(self):
+        """
+        Prints all the elements in the linked list.
+        """
+        elements = []
+        current = self.head
+        while current:
+            elements.append(str(current.data))
+            current = current.next
+        print(" -> ".join(elements) if elements else "Empty List")
+
+# --- Test Cases ---
+print("Initializing a new linked list...")
+my_list = LinkedList()
+my_list.display()
+
+print("\nInserting 10 at the end:")
+my_list.insert_at_end(10)
+my_list.display()
+
+print("\nInserting 20 at the beginning:")
+my_list.insert_at_beginning(20)
+my_list.display()
+
+print("\nInserting 30 at the end:")
+my_list.insert_at_end(30)
+my_list.display()
+
+print("\nInserting 5 at the beginning:")
+my_list.insert_at_beginning(5)
+my_list.display()
+
+print("\nInserting 25 at the end:")
+my_list.insert_at_end(25)
+my_list.display()

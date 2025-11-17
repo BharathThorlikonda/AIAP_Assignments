@@ -1,0 +1,101 @@
+class Node:
+    """
+    Represents a node in a Binary Search Tree.
+    Each node contains data and references to its left and right children.
+    """
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+class BinarySearchTree:
+    """
+    A simple implementation of a Binary Search Tree data structure.
+    Supports insertion and inorder traversal.
+    """
+    def __init__(self):
+        """
+        Initializes an empty BST.
+        """
+        self.root = None
+
+    def insert(self, data):
+        """
+        Inserts a new node with the given data into the BST.
+        If the tree is empty, the new node becomes the root.
+        Otherwise, it finds the correct position for the new node.
+
+        Args:
+            data: The data to be inserted into the tree.
+        """
+        new_node = Node(data)
+        if self.root is None:
+            self.root = new_node
+        else:
+            self._insert_recursive(self.root, new_node)
+
+    def _insert_recursive(self, current_node, new_node):
+        """
+        Helper method for recursive insertion into the BST.
+        """
+        if new_node.data < current_node.data:
+            if current_node.left is None:
+                current_node.left = new_node
+            else:
+                self._insert_recursive(current_node.left, new_node)
+        elif new_node.data > current_node.data:
+            if current_node.right is None:
+                current_node.right = new_node
+            else:
+                self._insert_recursive(current_node.right, new_node)
+        # If data is equal, we typically don't insert duplicates in a simple BST
+        # Or handle as per specific requirements (e.g., update node, count frequency)
+
+    def inorder_traversal(self):
+        """
+        Performs an inorder traversal of the BST and returns a list of elements.
+        Inorder traversal visits nodes in ascending order.
+
+        Returns:
+            list: A list containing the elements of the BST in sorted order.
+        """
+        result = []
+        self._inorder_recursive(self.root, result)
+        return result
+
+    def _inorder_recursive(self, node, result):
+        """
+        Helper method for recursive inorder traversal.
+        """
+        if node:
+            self._inorder_recursive(node.left, result)
+            result.append(node.data)
+            self._inorder_recursive(node.right, result)
+
+# --- Test Cases ---
+print("Initializing a new Binary Search Tree...")
+bst = BinarySearchTree()
+
+print("Inserting elements: 50, 30, 70, 20, 40, 60, 80")
+bst.insert(50)
+bst.insert(30)
+bst.insert(70)
+bst.insert(20)
+bst.insert(40)
+bst.insert(60)
+bst.insert(80)
+
+print("Inorder traversal (should be sorted):", bst.inorder_traversal()) # Expected: [20, 30, 40, 50, 60, 70, 80]
+
+print("\nInserting a duplicate (50, usually ignored in simple BST):")
+bst.insert(50)
+print("Inorder traversal after duplicate insert:", bst.inorder_traversal())
+
+print("\nInserting a new element: 75")
+bst.insert(75)
+print("Inorder traversal after inserting 75:", bst.inorder_traversal())
+
+print("\nInitializing an empty BST and inserting one element: 100")
+bst_single = BinarySearchTree()
+bst_single.insert(100)
+print("Inorder traversal of single element BST:", bst_single.inorder_traversal())

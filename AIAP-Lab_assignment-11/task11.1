@@ -1,0 +1,111 @@
+class Stack:
+    """
+    A simple implementation of a Stack data structure.
+    Supports push, pop, peek, and is_empty operations.
+    """
+    def __init__(self):
+        """
+        Initializes an empty stack.
+        """
+        self._items = []
+
+    def is_empty(self):
+        """
+        Checks if the stack is empty.
+
+        Returns:
+            bool: True if the stack is empty, False otherwise.
+        """
+        return len(self._items) == 0
+
+    def push(self, item):
+        """
+        Adds an item to the top of the stack.
+
+        Args:
+            item: The item to be added to the stack.
+        """
+        self._items.append(item)
+
+    def pop(self):
+        """
+        Removes and returns the item from the top of the stack.
+
+        Returns:
+            Any: The item removed from the top of the stack.
+
+        Raises:
+            IndexError: If the stack is empty.
+        """
+        if self.is_empty():
+            raise IndexError("pop from empty stack")
+        return self._items.pop()
+
+    def peek(self):
+        """
+        Returns the item at the top of the stack without removing it.
+
+        Returns:
+            Any: The item at the top of the stack.
+
+        Raises:
+            IndexError: If the stack is empty.
+        """
+        if self.is_empty():
+            raise IndexError("peek from empty stack")
+        return self._items[-1]
+
+    def size(self):
+        """
+        Returns the number of items in the stack.
+
+        Returns:
+            int: The number of items in the stack.
+        """
+        return len(self._items)
+
+    def __str__(self):
+        """
+        Returns a string representation of the stack.
+        """
+        return f"Stack: {self._items}"
+
+# --- Test Cases ---
+print("Initializing a new stack...")
+my_stack = Stack()
+print(f"Is stack empty? {my_stack.is_empty()}") # Expected: True
+
+print("Pushing items: 10, 20, 30")
+my_stack.push(10)
+my_stack.push(20)
+my_stack.push(30)
+print(my_stack)
+print(f"Is stack empty? {my_stack.is_empty()}") # Expected: False
+print(f"Stack size: {my_stack.size()}") # Expected: 3
+
+print(f"Top item (peek): {my_stack.peek()}") # Expected: 30
+print(my_stack) # Stack should remain unchanged
+
+print(f"Popping item: {my_stack.pop()}") # Expected: 30
+print(my_stack)
+print(f"Stack size: {my_stack.size()}") # Expected: 2
+
+print(f"Popping item: {my_stack.pop()}") # Expected: 20
+print(my_stack)
+print(f"Top item (peek): {my_stack.peek()}") # Expected: 10
+
+print(f"Popping item: {my_stack.pop()}") # Expected: 10
+print(my_stack)
+print(f"Is stack empty? {my_stack.is_empty()}") # Expected: True
+
+print("\nAttempting to pop from an empty stack (should raise error):")
+try:
+    my_stack.pop()
+except IndexError as e:
+    print(f"Caught expected error: {e}")
+
+print("\nAttempting to peek from an empty stack (should raise error):")
+try:
+    my_stack.peek()
+except IndexError as e:
+    print(f"Caught expected error: {e}")
