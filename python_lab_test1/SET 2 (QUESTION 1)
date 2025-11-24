@@ -1,0 +1,240 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **SET:2(QUESTION 1)**"
+      ],
+      "metadata": {
+        "id": "TvNTV9YwFwiZ"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "5f8f68f5"
+      },
+      "source": [
+        "# Task\n",
+        "Generate comprehensive test cases for an `is_prime(n)` function, implement the `is_prime(n)` function in Python, and then test the implementation against the generated test cases to ensure correctness."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ef97558b"
+      },
+      "source": [
+        "## Generate Test Cases\n",
+        "\n",
+        "### Subtask:\n",
+        "Utilize an AI coding tool to generate a comprehensive set of test cases for a function `is_prime(n)`, which checks if a number `n` is prime. Include justifications for each test case to cover different scenarios (e.g., small primes, non-primes, edge cases like 0, 1, 2).\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "c0f7cc71"
+      },
+      "source": [
+        "**Reasoning**:\n",
+        "To address the subtask, I will define the `is_prime` function and then simulate calling an AI coding tool within a Python code block to generate comprehensive test cases for it, including justifications as specified.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "e7f36581"
+      },
+      "source": [
+        "def is_prime(n):\n",
+        "    \"\"\"\n",
+        "    Checks if a number n is prime.\n",
+        "    \"\"\"\n",
+        "    if n < 2:\n",
+        "        return False\n",
+        "    for i in range(2, int(n**0.5) + 1):\n",
+        "        if n % i == 0:\n",
+        "            return False\n",
+        "    return True\n",
+        "\n",
+        "# AI Coding Tool Prompt:\n",
+        "# Please generate a comprehensive set of test cases for the `is_prime(n)` function defined above.\n",
+        "# For each test case, include the input, the expected output, and a justification explaining\n",
+        "# why this specific input was chosen and what scenario it covers. Ensure the test cases cover:\n",
+        "# - Small prime numbers (e.g., 2, 3, 5, 7)\n",
+        "# - Small non-prime numbers (e.g., 4, 6, 9)\n",
+        "# - Edge cases: 0, 1, and negative numbers (e.g., -5)\n",
+        "# - Larger prime numbers (e.g., 97)\n",
+        "# - Larger non-prime numbers (e.g., 100)\n",
+        "\n",
+        "# Expected Test Cases:\n",
+        "# 1. Input: 2, Expected Output: True, Justification: Smallest and only even prime number.\n",
+        "# 2. Input: 3, Expected Output: True, Justification: A small odd prime number.\n",
+        "# 3. Input: 5, Expected Output: True, Justification: Another small odd prime number.\n",
+        "# 4. Input: 7, Expected Output: True, Justification: A small prime number demonstrating the loop functionality.\n",
+        "# 5. Input: 4, Expected Output: False, Justification: Smallest composite number (non-prime).\n",
+        "# 6. Input: 6, Expected Output: False, Justification: An even composite number.\n",
+        "# 7. Input: 9, Expected Output: False, Justification: An odd composite number.\n",
+        "# 8. Input: 0, Expected Output: False, Justification: Edge case, by definition 0 is not prime.\n",
+        "# 9. Input: 1, Expected Output: False, Justification: Edge case, by definition 1 is not prime.\n",
+        "# 10. Input: -5, Expected Output: False, Justification: Edge case, negative numbers are not prime.\n",
+        "# 11. Input: 97, Expected Output: True, Justification: A larger prime number.\n",
+        "# 12. Input: 100, Expected Output: False, Justification: A larger composite number."
+      ],
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "e5423f89"
+      },
+      "source": [
+        "## Test is_prime Function\n",
+        "\n",
+        "### Subtask:\n",
+        "Execute the `is_prime` function with all the previously generated test cases and verify that the function produces the expected output for each case.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "099859cd"
+      },
+      "source": [
+        "**Reasoning**:\n",
+        "To execute the `is_prime` function with the previously generated test cases and verify the output, I will create a Python code block that defines the test cases, iterates through them, calls the function, compares the results, and prints a summary of passed and failed tests.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "c028b6ea",
+        "outputId": "a38f215d-f5f4-45f1-ee6b-07bbd86250ef"
+      },
+      "source": [
+        "test_cases = [\n",
+        "    {'input': 2, 'expected_output': True, 'justification': 'Smallest and only even prime number.'},\n",
+        "    {'input': 3, 'expected_output': True, 'justification': 'A small odd prime number.'},\n",
+        "    {'input': 5, 'expected_output': True, 'justification': 'Another small odd prime number.'},\n",
+        "    {'input': 7, 'expected_output': True, 'justification': 'A small prime number demonstrating the loop functionality.'},\n",
+        "    {'input': 4, 'expected_output': False, 'justification': 'Smallest composite number (non-prime).'},\n",
+        "    {'input': 6, 'expected_output': False, 'justification': 'An even composite number.'},\n",
+        "    {'input': 9, 'expected_output': False, 'justification': 'An odd composite number.'},\n",
+        "    {'input': 0, 'expected_output': False, 'justification': 'Edge case, by definition 0 is not prime.'},\n",
+        "    {'input': 1, 'expected_output': False, 'justification': 'Edge case, by definition 1 is not prime.'},\n",
+        "    {'input': -5, 'expected_output': False, 'justification': 'Edge case, negative numbers are not prime.'},\n",
+        "    {'input': 97, 'expected_output': True, 'justification': 'A larger prime number.'},\n",
+        "    {'input': 100, 'expected_output': False, 'justification': 'A larger composite number.'}\n",
+        "]\n",
+        "\n",
+        "passed_tests = 0\n",
+        "failed_tests = 0\n",
+        "total_tests = len(test_cases)\n",
+        "\n",
+        "print(\"\\n--- Running Test Cases ---\")\n",
+        "for i, test_case in enumerate(test_cases):\n",
+        "    n = test_case['input']\n",
+        "    expected = test_case['expected_output']\n",
+        "    justification = test_case['justification']\n",
+        "    actual = is_prime(n)\n",
+        "\n",
+        "    if actual == expected:\n",
+        "        result = \"PASSED\"\n",
+        "        passed_tests += 1\n",
+        "    else:\n",
+        "        result = \"FAILED\"\n",
+        "        failed_tests += 1\n",
+        "\n",
+        "    print(f\"Test {i+1}: Input={n}, Expected={expected}, Actual={actual} - {result} ({justification})\")\n",
+        "\n",
+        "print(\"\\n--- Test Summary ---\")\n",
+        "print(f\"Total Tests: {total_tests}\")\n",
+        "print(f\"Tests Passed: {passed_tests}\")\n",
+        "print(f\"Tests Failed: {failed_tests}\")\n",
+        "\n"
+      ],
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "--- Running Test Cases ---\n",
+            "Test 1: Input=2, Expected=True, Actual=True - PASSED (Smallest and only even prime number.)\n",
+            "Test 2: Input=3, Expected=True, Actual=True - PASSED (A small odd prime number.)\n",
+            "Test 3: Input=5, Expected=True, Actual=True - PASSED (Another small odd prime number.)\n",
+            "Test 4: Input=7, Expected=True, Actual=True - PASSED (A small prime number demonstrating the loop functionality.)\n",
+            "Test 5: Input=4, Expected=False, Actual=False - PASSED (Smallest composite number (non-prime).)\n",
+            "Test 6: Input=6, Expected=False, Actual=False - PASSED (An even composite number.)\n",
+            "Test 7: Input=9, Expected=False, Actual=False - PASSED (An odd composite number.)\n",
+            "Test 8: Input=0, Expected=False, Actual=False - PASSED (Edge case, by definition 0 is not prime.)\n",
+            "Test 9: Input=1, Expected=False, Actual=False - PASSED (Edge case, by definition 1 is not prime.)\n",
+            "Test 10: Input=-5, Expected=False, Actual=False - PASSED (Edge case, negative numbers are not prime.)\n",
+            "Test 11: Input=97, Expected=True, Actual=True - PASSED (A larger prime number.)\n",
+            "Test 12: Input=100, Expected=False, Actual=False - PASSED (A larger composite number.)\n",
+            "\n",
+            "--- Test Summary ---\n",
+            "Total Tests: 12\n",
+            "Tests Passed: 12\n",
+            "Tests Failed: 0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "a79e1a37"
+      },
+      "source": [
+        "## Final Task\n",
+        "\n",
+        "### Subtask:\n",
+        "Confirm that the `is_prime` function is correctly implemented and passes all the justified test cases.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "b12bfb1a"
+      },
+      "source": [
+        "## Summary:\n",
+        "\n",
+        "### Q&A\n",
+        "Yes, the `is_prime` function is correctly implemented and passed all 12 justified test cases, confirming its correctness across various scenarios including edge cases.\n",
+        "\n",
+        "### Data Analysis Key Findings\n",
+        "*   A comprehensive suite of 12 test cases was generated, covering critical scenarios such as small prime numbers (e.g., 2, 3, 5, 7), small non-prime numbers (e.g., 4, 6, 9), edge cases (0, 1, negative numbers like -5), larger prime numbers (97), and larger non-prime numbers (100).\n",
+        "*   The `is_prime` function correctly identified all tested prime numbers (2, 3, 5, 7, 97) as `True`.\n",
+        "*   The `is_prime` function correctly identified all tested composite numbers (4, 6, 9, 100) as `False`.\n",
+        "*   The `is_prime` function correctly handled all specified edge cases (0, 1, and -5) by returning `False`, aligning with the mathematical definition of prime numbers.\n",
+        "*   All 12 generated test cases passed successfully, with 0 failures, indicating that the `is_prime` function performs as expected for all tested inputs.\n",
+        "\n",
+        "### Insights or Next Steps\n",
+        "*   The `is_prime` function implementation is robust and appears correct for all tested non-negative integer inputs, effectively handling prime, composite, and critical edge cases.\n",
+        "*   For production-level code, consider adding type hints and docstrings to the `is_prime` function to improve readability and maintainability.\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Welcome To Colab",
+      "provenance": []
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,283 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# **SET:2 (QUESTION 2)**"
+      ],
+      "metadata": {
+        "id": "_ntSJ62ZG3nY"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "9bbb60fc"
+      },
+      "source": [
+        "### `Rectangle` Class with Manual Docstrings and Comments\n",
+        "\n",
+        "Below is the `Rectangle` class implemented with traditional, manually written docstrings for the class and its methods, along with inline comments to explain specific parts of the code. This serves as our baseline for comparison."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0522efe0",
+        "outputId": "f77a4a50-21fb-4e52-a89a-9bf15b709f63"
+      },
+      "source": [
+        "class Rectangle:\n",
+        "    \"\"\"Represents a rectangle with a given width and height.\n",
+        "\n",
+        "    Attributes:\n",
+        "        width (float or int): The width of the rectangle.\n",
+        "        height (float or int): The height of the rectangle.\n",
+        "    \"\"\"\n",
+        "\n",
+        "    def __init__(self, width, height):\n",
+        "        \"\"\"Initializes a new Rectangle object.\n",
+        "\n",
+        "        Args:\n",
+        "            width (float or int): The initial width of the rectangle. Must be non-negative.\n",
+        "            height (float or int): The initial height of the rectangle. Must be non-negative.\n",
+        "\n",
+        "        Raises:\n",
+        "            ValueError: If width or height is negative.\n",
+        "        \"\"\"\n",
+        "        # Ensure width is non-negative\n",
+        "        if width < 0:\n",
+        "            raise ValueError(\"Width cannot be negative.\")\n",
+        "        # Ensure height is non-negative\n",
+        "        if height < 0:\n",
+        "            raise ValueError(\"Height cannot be negative.\")\n",
+        "\n",
+        "        self._width = width  # Store width as a private attribute\n",
+        "        self._height = height # Store height as a private attribute\n",
+        "\n",
+        "    @property\n",
+        "    def width(self):\n",
+        "        \"\"\"The width of the rectangle.\"\"\"\n",
+        "        return self._width\n",
+        "\n",
+        "    @width.setter\n",
+        "    def width(self, value):\n",
+        "        if value < 0:\n",
+        "            raise ValueError(\"Width cannot be negative.\")\n",
+        "        self._width = value\n",
+        "\n",
+        "    @property\n",
+        "    def height(self):\n",
+        "        \"\"\"The height of the rectangle.\"\"\"\n",
+        "        return self._height\n",
+        "\n",
+        "    @height.setter\n",
+        "    def height(self, value):\n",
+        "        if value < 0:\n",
+        "            raise ValueError(\"Height cannot be negative.\")\n",
+        "        self._height = value\n",
+        "\n",
+        "    def area(self):\n",
+        "        \"\"\"Calculates the area of the rectangle.\n",
+        "\n",
+        "        Returns:\n",
+        "            (float or int): The area of the rectangle (width * height).\n",
+        "        \"\"\"\n",
+        "        # Area is calculated as width multiplied by height\n",
+        "        return self._width * self._height\n",
+        "\n",
+        "    def perimeter(self):\n",
+        "        \"\"\"Calculates the perimeter of the rectangle.\n",
+        "\n",
+        "        Returns:\n",
+        "            (float or int): The perimeter of the rectangle (2 * (width + height)).\n",
+        "        \"\"\"\n",
+        "        # Perimeter is calculated as twice the sum of width and height\n",
+        "        return 2 * (self._width + self._height)\n",
+        "\n",
+        "# Example usage of the manually documented Rectangle class\n",
+        "rect = Rectangle(width=5, height=10)\n",
+        "print(f\"Manual Rectangle - Width: {rect.width}, Height: {rect.height}\")\n",
+        "print(f\"Manual Rectangle - Area: {rect.area()}\")\n",
+        "print(f\"Manual Rectangle - Perimeter: {rect.perimeter()}\")\n",
+        "\n",
+        "# Try updating dimensions\n",
+        "rect.width = 7\n",
+        "rect.height = 3\n",
+        "print(f\"Manual Rectangle - Updated Width: {rect.width}, Updated Height: {rect.height}\")\n",
+        "print(f\"Manual Rectangle - Updated Area: {rect.area()}\")\n",
+        "print(f\"Manual Rectangle - Updated Perimeter: {rect.perimeter()}\")\n"
+      ],
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Manual Rectangle - Width: 5, Height: 10\n",
+            "Manual Rectangle - Area: 50\n",
+            "Manual Rectangle - Perimeter: 30\n",
+            "Manual Rectangle - Updated Width: 7, Updated Height: 3\n",
+            "Manual Rectangle - Updated Area: 21\n",
+            "Manual Rectangle - Updated Perimeter: 20\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "9d166421"
+      },
+      "source": [
+        "### `Rectangle` Class with AI-Generated Docstrings and Comments (Conceptual)\n",
+        "\n",
+        "An AI assistant would likely analyze the code and generate docstrings and comments similar to the following. Notice how an AI might pick up on similar conventions and provide concise, accurate descriptions based on the code's explicit actions. For a direct comparison, you can look back at the manually documented class above."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2971f98a",
+        "outputId": "87138376-f8a1-49b8-b8a5-85b5dc486e5e"
+      },
+      "source": [
+        "# This cell conceptually demonstrates AI-generated documentation. An actual AI assistant would generate this dynamically.\n",
+        "\n",
+        "class RectangleAI:\n",
+        "    \"\"\"Represents a geometric rectangle.\n",
+        "\n",
+        "    This class allows creation of rectangle objects and provides methods to compute\n",
+        "    its area and perimeter, as well as property accessors for width and height.\n",
+        "\n",
+        "    Attributes:\n",
+        "        width (float): The width of the rectangle. Must be non-negative.\n",
+        "        height (float): The height of the rectangle. Must be non-negative.\n",
+        "    \"\"\"\n",
+        "\n",
+        "    def __init__(self, width: float, height: float):\n",
+        "        \"\"\"Initializes a new RectangleAI instance.\n",
+        "\n",
+        "        Args:\n",
+        "            width (float): The initial width of the rectangle. Automatically sets `_width`.\n",
+        "            height (float): The initial height of the rectangle. Automatically sets `_height`.\n",
+        "\n",
+        "        Raises:\n",
+        "            ValueError: If either `width` or `height` is provided as a negative value.\n",
+        "        \"\"\"\n",
+        "        # Validate width to ensure it's not negative.\n",
+        "        if width < 0:\n",
+        "            raise ValueError(\"Width cannot be negative.\")\n",
+        "        # Validate height to ensure it's not negative.\n",
+        "        if height < 0:\n",
+        "            raise ValueError(\"Height cannot be negative.\")\n",
+        "\n",
+        "        self._width = width  # Private storage for the rectangle's width.\n",
+        "        self._height = height # Private storage for the rectangle's height.\n",
+        "\n",
+        "    @property\n",
+        "    def width(self) -> float:\n",
+        "        \"\"\"Gets the current width of the rectangle.\n",
+        "\n",
+        "        Returns:\n",
+        "            float: The width value.\n",
+        "        \"\"\"\n",
+        "        return self._width\n",
+        "\n",
+        "    @width.setter\n",
+        "    def width(self, value: float):\n",
+        "        \"\"\"Sets a new width for the rectangle.\n",
+        "\n",
+        "        Args:\n",
+        "            value (float): The new width to set. Must be non-negative.\n",
+        "\n",
+        "        Raises:\n",
+        "            ValueError: If the provided `value` is negative.\n",
+        "        \"\"\"\n",
+        "        if value < 0:\n",
+        "            raise ValueError(\"Width cannot be negative.\")\n",
+        "        self._width = value\n",
+        "\n",
+        "    @property\n",
+        "    def height(self) -> float:\n",
+        "        \"\"\"Gets the current height of the rectangle.\n",
+        "\n",
+        "        Returns:\n",
+        "            float: The height value.\n",
+        "        \"\"\"\n",
+        "        return self._height\n",
+        "\n",
+        "    @height.setter\n",
+        "    def height(self, value: float):\n",
+        "        \"\"\"Sets a new height for the rectangle.\n",
+        "\n",
+        "        Args:\n",
+        "            value (float): The new height to set. Must be non-negative.\n",
+        "\n",
+        "        Raises:\n",
+        "            ValueError: If the provided `value` is negative.\n",
+        "        \"\"\"\n",
+        "        if value < 0:\n",
+        "            raise ValueError(\"Height cannot be negative.\")\n",
+        "        self._height = value\n",
+        "\n",
+        "    def area(self) -> float:\n",
+        "        \"\"\"Computes the area of the rectangle.\n",
+        "\n",
+        "        The area is calculated as the product of its width and height.\n",
+        "\n",
+        "        Returns:\n",
+        "            float: The calculated area of the rectangle.\n",
+        "        \"\"\"\n",
+        "        return self._width * self._height  # Area calculation: width * height.\n",
+        "\n",
+        "    def perimeter(self) -> float:\n",
+        "        \"\"\"Computes the perimeter of the rectangle.\n",
+        "\n",
+        "        The perimeter is calculated as two times the sum of its width and height.\n",
+        "\n",
+        "        Returns:\n",
+        "            float: The calculated perimeter of the rectangle.\n",
+        "        \"\"\"\n",
+        "        # Perimeter calculation: 2 * (width + height).\n",
+        "        return 2 * (self._width + self._height)\n",
+        "\n",
+        "# Example usage of the conceptually AI-documented Rectangle class\n",
+        "rect_ai = RectangleAI(width=5.5, height=10.2)\n",
+        "print(f\"AI Rectangle - Width: {rect_ai.width}, Height: {rect_ai.height}\")\n",
+        "print(f\"AI Rectangle - Area: {rect_ai.area():.2f}\")\n",
+        "print(f\"AI Rectangle - Perimeter: {rect_ai.perimeter():.2f}\")\n"
+      ],
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "AI Rectangle - Width: 5.5, Height: 10.2\n",
+            "AI Rectangle - Area: 56.10\n",
+            "AI Rectangle - Perimeter: 31.40\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Welcome To Colab",
+      "provenance": []
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
